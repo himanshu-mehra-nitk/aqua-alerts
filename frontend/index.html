@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaAlerts - Water Monitoring</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="auth-screen" class="auth-container">
+        <h2 class="title">WATER CONSUMPTION MONITORING SYSTEM</h2>
+        <div class="footer">
+            <p>Carried out by: Himanshu Mehar (231IT027) </p>
+        </div>
+        <div class="auth-box">
+            <h1>AquaAlerts</h1>
+            
+            <!-- Login Flow - WITHOUT OTP -->
+            <div id="login-form-div">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Log In</button>
+                </form>
+                
+                <p>
+                    Don't have an account? 
+                    <button id="show-register-btn" class="btn-link">Register here</button>
+                </p>
+            </div>
+
+            <!-- Register Flow - WITH OTP -->
+            <div id="register-form-div" style="display: none;">
+                <h2>Register</h2>
+                <form id="register-email-form">
+                    <input type="text" id="register-name" placeholder="Name" required>
+                    <input type="email" id="register-email" placeholder="Email" required 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            title="Please enter a valid email address">
+                    <input type="password" id="register-password" placeholder="Password" required>
+                    <select id="register-role" required>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button type="submit" class="btn-primary">Send OTP</button>
+                </form>
+                
+                <div id="register-otp-section" style="display: none;">
+                    <h3>Verify Email</h3>
+                    <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">
+                        We've sent a 6-digit OTP to your email
+                    </p>
+                    <form id="register-otp-form">
+                        <input type="text" id="register-otp" placeholder="Enter OTP" maxlength="6" required 
+                            pattern="[0-9]{6}" title="Enter 6-digit OTP">
+                        <button type="submit" class="btn-primary">Verify OTP & Register</button>
+                    </form>
+                    <button id="register-resend-otp" class="btn-link" style="margin-top: 10px;">Resend OTP</button>
+                </div>
+                
+                <p>
+                    Already have an account? 
+                    <button id="show-login-btn" class="btn-link">Log in here</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="user-dashboard" class="dashboard-container" style="display: none;">
+        <header>
+            <h1 id="welcome-message">Welcome, User!</h1>
+            <div>
+                <button id="edit-profile-btn" class="btn-secondary">Edit Profile</button>
+                <button id="logout-btn" class="btn-secondary">Logout</button>
+            </div>
+        </header>
+        
+        <div class="flex-container-top">
+            <div class="usage-entry card">
+                <h2>Record Daily Water Usage</h2>
+                <form id="add-usage-form">
+                    <div class="input-group">
+                        <label for="usage-date">Date</label>
+                        <input type="date" id="usage-date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="usage-amount">Usage (Liters)</label>
+                        <input type="number" id="usage-amount" placeholder="e.g., 250" required min="0">
+                    </div>
+                    <button type="submit" class="btn-primary">Add Usage</button>
+                </form>
+            </div>
+
+            <div class="card data-simulation">
+                <h2>Data Management</h2>
+                <p>Generate simulated data for initial setup or testing.</p>
+                <button id="simulate-data-btn" class="btn-secondary">Generate Simulated Data</button>
+            </div>
+        </div>
+
+        <div class="overview-cards">
+            <div class="card">
+                <h3>Daily Threshold</h3>
+                <p><span id="threshold-display">200L</span></p>
+            </div>
+            <div id="today-card" class="card">
+                <h3>Liters Used Today</h3>
+                <p><span id="today-usage">0.0L</span></p>
+                <h2></h2>
+            </div>
+            <div class="card">
+                <h3>Weekly Usage</h3>
+                <p><span id="weekly-usage">0.0L</span></p>
+                <h2></h2>
+            </div>
+            <div class="card">
+                <h3>Monthly Usage</h3>
+                <p><span id="monthly-usage">0.0L</span></p>
+                <h2></h2>
+            </div>
+        </div>
+
+        <div class="main-chart card">
+            <h3>Historical Water Usage</h3>
+            <div class="chart-container">
+                <canvas id="usageChart"></canvas>
+            </div>
+        </div>
+
+        <div class="flex-container-bottom">
+            <div class="alert-section card">
+                <h3>Active Alerts</h3>
+                <div id="alerts-container">
+                    </div>
+            </div>
+            <div class="tips-section card">
+                <h3>Conservation Tips</h3>
+                <ul id="conservation-tips">
+                    </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-dashboard" class="dashboard-container" style="display: none;">
+        <header>
+            <h1 id="admin-welcome-message">Admin Panel</h1>
+            <div>
+                <button id="admin-edit-profile-btn" class="btn-secondary">Edit Profile</button>
+                <button id="admin-logout-btn" class="btn-secondary">Logout</button>
+            </div>
+        </header>
+
+        <div id="admin-user-list-view">
+            <h2>Registered Users</h2>
+            <div id="admin-user-list" class="user-list-container">
+            </div>
+        </div>
+
+        <div id="admin-dashboard-view" style="display: none;">
+            <button id="admin-back-btn" class="btn-back">← Back to User List</button>
+            <h2>Usage Data for: <span id="admin-user-name"></span></h2>
+            
+            <div class="overview-cards">
+                <div class="card">
+                    <h3>Daily Threshold</h3>
+                    <p><span id="admin-user-threshold-display">200L</span></p>
+                </div>
+                <div id="admin-user-today-card" class="card">
+                    <h3>Liters Used Today</h3>
+                    <p><span id="admin-user-today-usage">0.0L</span></p>
+                </div>
+                <div id="admin-user-weekly-card" class="card">
+                    <h3>Weekly Usage</h3>
+                    <p><span id="admin-user-weekly-usage">0.0L</span></p>
+                </div>
+                <div id="admin-user-monthly-card" class="card">
+                    <h3>Monthly Usage</h3>
+                    <p><span id="admin-user-monthly-usage">0.0L</span></p>
+                </div>
+            </div>
+
+            <div class="main-chart card">
+                <h3>Historical Water Usage</h3>
+                <div class="chart-container">
+                    <canvas id="adminUsageChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div id="admin-list-view" style="margin-top: 40px;">
+            <h2>Registered Admin Accounts</h2>
+            <div id="admin-list" class="user-list-container">
+                <p style="text-align: center; color: #6c757d;">Loading admin list...</p>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

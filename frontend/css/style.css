@@ -1,0 +1,739 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c4dcec;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-top: 0;
+}
+.title{
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+/* --- Authentication Screen --- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e8eef2;
+}
+
+.auth-box {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-box h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.auth-box form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-size: 1em;
+}
+
+/* --- Dashboard Layout --- */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Overview Cards --- */
+.overview-cards {
+    display: grid;
+    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.overview-cards .card {
+    text-align: center;
+}
+
+.overview-cards h3 {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.overview-cards h2 {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.overview-cards p {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0;
+}
+
+/* Specific styling for the 'Today' card when threshold is exceeded */
+#today-card.exceeded {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+#today-card.exceeded p {
+    color: #dc3545; /* Red color for exceeded usage */
+}
+
+/* --- Chart --- */
+.main-chart {
+    margin-bottom: 30px;
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+}
+
+/* --- Usage Entry Form --- */
+.usage-entry {
+    margin-bottom: 30px;
+}
+
+.usage-entry form {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.usage-entry .input-group {
+    flex-grow: 1;
+}
+
+.usage-entry label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.usage-entry input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.usage-entry button {
+    flex-grow: 0;
+    width: auto;
+}
+
+/* --- Alerts and Tips Section --- */
+.flex-container {
+    display: flex;
+    gap: 20px;
+}
+
+.alert-section, .tips-section {
+    flex: 1;
+}
+
+/* Alerts */
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-danger {
+    height: 30px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    height: 20px;
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.alert button {
+    background-color: #721c24;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.no-alerts {
+    color: #6c757d;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Tips */
+#conservation-tips {
+    list-style: disc inside;
+    padding-left: 20px;
+    margin-top: 0px;
+    
+}
+
+#conservation-tips li {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.tips-section {
+    margin-top: 10px;
+}
+
+/* --- Toast Notifications --- */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.toast-success {
+    background-color: #28a745;
+}
+
+.toast-error {
+    background-color: #dc3545;
+}
+
+.toast-warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+/* --- Admin Panel Specific Styles --- */
+
+/* User List */
+.user-list-container {
+    margin-top: 20px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#admin-list {
+    margin-bottom: 20px;
+}
+
+.admin-user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    background-color: #f9f9f9;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.admin-user-row:hover {
+    background-color: #e3f2fd; /* Light blue on hover */
+}
+
+.admin-user-row > div:nth-child(1) {
+    font-weight: bold;
+    flex-basis: 30%;
+}
+
+.admin-user-row > div:nth-child(2) {
+    color: #555;
+    font-size: 0.9em;
+    flex-basis: 40%;
+    text-align: center;
+}
+
+.admin-user-row > div:nth-child(3) {
+    flex-basis: 30%;
+    text-align: right;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.8em;
+}
+
+.btn-view {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-view:hover {
+    background-color: #0056b3;
+}
+
+.btn-back {
+    background: #e9ecef;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #dee2e6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin: 20px 10px;
+        padding: 0;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .usage-entry form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .usage-entry button {
+        width: 100%;
+    }
+}
+
+/* Profile Modal Styles */
+.profile-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profile-modal h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.profile-form-group {
+    margin-bottom: 20px;
+}
+
+.profile-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.profile-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.danger-zone {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+.danger-zone h3 {
+    color: #721c24;
+    margin-top: 0;
+}
+
+.danger-zone p {
+    color: #721c24;
+    margin-bottom: 15px;
+}
+
+/* Improved header styling for admin dashboard */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8em;
+}
+
+header div {
+    display: flex;
+    gap: 10px;
+}
+
+/* OTP Input Styles */
+.otp-input {
+    text-align: center;
+    font-size: 1.2em;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.otp-timer {
+    text-align: center;
+    color: #dc3545;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.otp-success {
+    color: #28a745;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.otp-error {
+    color: #dc3545;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Loading state for OTP buttons */
+.btn-loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Step indicators */
+.auth-step {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.step {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.step.active {
+    background: #007bff;
+    color: white;
+}
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: #e9ecef;
+    margin: 0 5px;
+    align-self: center;
+}
+
+/* Auth Form Visibility Control */
+#login-form-div, #register-form-div {
+    display: none;
+}
+
+#login-form-div:only-child, 
+#auth-screen #login-form-div:first-child:not(:only-child),
+#auth-screen #register-form-div:first-child:not(:only-child) {
+    display: block;
+}
+
+/* Alternative simpler approach */
+.auth-form-active {
+    display: block !important;
+}
+
+.auth-form-hidden {
+    display: none !important;
+}
+
+/* Color-coded overview cards for both user and admin dashboards */
+.overview-cards .card.exceeded {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.overview-cards .card.exceeded p {
+    color: #dc3545;
+}
+
+.overview-cards .card.warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+.overview-cards .card.warning p {
+    color: #856404;
+}
+
+.overview-cards .card.good {
+    background-color: #d1edff;
+    border: 1px solid #b3d7ff;
+}
+
+.overview-cards .card.good p {
+    color: #007bff;
+}
+
+/* Specific styling for weekly and monthly threshold cards */
+#weekly-card.exceeded,
+#monthly-card.exceeded {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+#weekly-card.exceeded p,
+#monthly-card.exceeded p {
+    color: #dc3545;
+}
+
+#weekly-card.warning,
+#monthly-card.warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+#weekly-card.warning p,
+#monthly-card.warning p {
+    color: #856404;
+}
+
+#weekly-card.good,
+#monthly-card.good {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+#weekly-card.good p,
+#monthly-card.good p {
+    color: #007bff;
+}
+
+/* Admin User Dashboard specific cards */
+#admin-user-today-card.exceeded,
+#admin-user-weekly-card.exceeded,
+#admin-user-monthly-card.exceeded {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+#admin-user-today-card.exceeded p,
+#admin-user-weekly-card.exceeded p,
+#admin-user-monthly-card.exceeded p {
+    color: #dc3545;
+}
+
+#admin-user-today-card.warning,
+#admin-user-weekly-card.warning,
+#admin-user-monthly-card.warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+#admin-user-today-card.warning p,
+#admin-user-weekly-card.warning p,
+#admin-user-monthly-card.warning p {
+    color: #856404;
+}
+
+#admin-user-today-card.good,
+#admin-user-weekly-card.good,
+#admin-user-monthly-card.good {
+    background-color: #ffffff;
+    border: 1px solid #b3d7ff;
+}
+
+#admin-user-today-card.good p,
+#admin-user-weekly-card.good p,
+#admin-user-monthly-card.good p {
+    color: #007bff;
+}
+
